@@ -2,7 +2,6 @@ import React from 'react';
 import logo from './logo.svg';
 import SignUpForm from './components/SignUpForm'
 import './App.css';
-
 class App extends React.Component {
 
   constructor(props) {
@@ -10,6 +9,10 @@ class App extends React.Component {
     this.state = {
       loggedIn: false
     }
+  }
+
+  componentDidMount() {
+
   }
 
   onSubmit = (data) => {
