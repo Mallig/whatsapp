@@ -4,7 +4,7 @@ import SignUpForm from './components/SignUpForm'
 import './App.css';
 
 class App extends React.Component {
-  
+
   constructor(props) {
     super(props)
     this.state = {
@@ -13,9 +13,8 @@ class App extends React.Component {
   }
 
   onSubmit = (data) => {
-    this.setState({loggedIn: true, formData: data, formDetails: "email: " + data.email})
+    this.setState({loggedIn: true, formData: data, username: data.username})
   }
-  
   
   render() {
     return (
@@ -24,7 +23,7 @@ class App extends React.Component {
           <img src={logo} className="App-logo" alt="logo" />
           {(!this.state.loggedIn
             ? <SignUpForm onSubmit={this.onSubmit}/>
-            : this.state.formDetails
+            : <p>And the username is: {this.state.username}</p>
           )}
         </header>
       </div>
