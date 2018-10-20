@@ -2,8 +2,8 @@ import React from 'react'
 
 const Navbar = (props) => {
     return (
-        <div style={{'align': `${props.orientation}`}}>
-            This is the Navbar
+        <div style={{'textAlign': `${props.orientation}`}}>
+            This is the Navbar on the {props.orientation}
         </div>
     )
 }

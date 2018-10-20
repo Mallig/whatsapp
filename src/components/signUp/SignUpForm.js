@@ -1,8 +1,7 @@
 import React from 'react'
-import SignUpHelper from '../../utils/signUp/SignUpHelper'
 import InvalidDetailsError from './InvalidDetailsError';
 import WelcomeMessage from './WelcomeMessage'
-const signUpHelper = new SignUpHelper()
+
 class SignUpForm extends React.Component {
 
   constructor(props) {
@@ -24,9 +23,20 @@ class SignUpForm extends React.Component {
   handleSubmit = (e) => {
     e.preventDefault()
     this.data = this.extractFormData(...e.target)
-    console.log(this.data)
     this.setState({data: this.data})
     this.props.onSubmit(this.data)
+  }
+
+  validateData = (password, confirmPassword) => {
+    return this.verifyPassword(password, confirmPassword)
+  }
+
+  verifyPassword = (password, confirmPassword) => {
+    if (    (password !== confirmPassword)
+        || !(password.length >= 4)) {
+        return false
+    }
+    return true
   }
   
   render() {
@@ -48,10 +58,6 @@ class SignUpForm extends React.Component {
         <InvalidDetailsError invalidDetails={!this.state.data.valid}/>
       </div>
     )
-  }
-
-  validateData = (password, confirmPassword) => {
-    return signUpHelper.verifyPassword(password, confirmPassword)
   }
 }
 
