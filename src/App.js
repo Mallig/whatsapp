@@ -1,7 +1,7 @@
 import React from 'react';
 import logo from './logo.svg';
 import SignUpForm from './components/signUp/SignUpForm'
-import MainScreen from './components/MainScreen'
+import MainScreen from './components/main/MainScreen'
 import './App.css';
 class App extends React.Component {
 
