@@ -52,7 +52,7 @@ input + input {
   float: right;
 }
 
-#container {
+#mainSection {
   height: 90%;
   width: 90%;
   display: flex;

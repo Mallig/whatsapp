@@ -37,7 +37,7 @@ class SignUpForm extends React.Component {
   
   render() {
     return (
-      <div>
+      <div id='signUpForm'>
         <h1>hello you want to sign up</h1>
         <form onSubmit={this.handleSubmit.bind(this)}>
           <label htmlFor='username'>Enter your username :</label>
