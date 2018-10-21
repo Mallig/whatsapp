@@ -20,14 +20,11 @@ class App extends React.Component {
   
   render() {
     return (
-      <div className="App">
-        <div className="whatsapp-container">
-          <Navbar/>
-          {this.state.loggedIn 
-          ? <MainScreen username={this.state.username}/>
-          : <SignUpForm onSubmit={this.onSubmit}/>
-          }
-        </div>
+      <div className="whatsapp-container">
+        <Navbar/>
+        {this.state.loggedIn 
+        ? <MainScreen username={this.state.username}/>
+        : <SignUpForm onSubmit={this.onSubmit}/>}
       </div>
     )
   }
