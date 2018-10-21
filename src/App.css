@@ -5,73 +5,33 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-form {
-  font-size: 25px;
+  height: 100%;
   width: 100%;
-  margin: 0 auto;
-}
-
-label, input {
-  /* in order to define widths */
-  display: inline-block;
-}
-
-label {
-  width: 100%;
-  /* positions the label text beside the input */
-  text-align: left;
-}
-
-label + input {
-  width: 30%;
-  /* large margin-right to force the next element to the new-line
-     and margin-left to create a gutter between the label and input */
-  margin: 0 30% 0 0%;
-}
-
-/* only the submit button is matched by this selector,
- but to be sure you could use an id or class for that button */
-input + input {
-  float: right;
 }
 
 #mainSection {
-  height: 90%;
-  width: 90%;
+  height: 100%;
+  width: 100%;
   display: flex;
+  justify-content: center;
 }
 #leftThing {
-  width: 35%;
-  height: 80%;
-  margin-left: 0%;
+  width: 25%;
   text-align: left;
+  padding: 0% 2% 0% 0%;
 }
 #centerThing {
-  width: 55%;
+  width: 65%;
   height: 80%;
   text-align: center;
 }
 #rightThing {
-  text-align: right;
   width: 10%;
-  height: 80%;
+  text-align: right;
+  float: right;
+  padding: 0% 2% 0% 0%;
 }
 #navBar {
   width: 100%;
@@ -83,8 +43,4 @@ input + input {
   border-style: solid;
   border: black;
   border-width: 2px;
-}
-#signUp-username, #signUp-password, #signUp-confirmPassword {
-  text-align: left;
-  margin: none;
 }

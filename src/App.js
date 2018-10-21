@@ -22,9 +22,11 @@ class App extends React.Component {
     return (
       <div className="whatsapp-container">
         <Navbar/>
-        {this.state.loggedIn 
-        ? <MainScreen username={this.state.username}/>
-        : <SignUpForm onSubmit={this.onSubmit}/>}
+        <div id='mainSection'>
+          {this.state.loggedIn 
+          ? <MainScreen username={this.state.username}/>
+          : <SignUpForm onSubmit={this.onSubmit}/>}
+        </div>
       </div>
     )
   }
