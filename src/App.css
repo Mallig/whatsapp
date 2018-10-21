@@ -1,13 +1,12 @@
 .App {
-  text-align: center;
 }
 
 .App-logo {
-  animation: App-logo-spin infinite 20s linear;
+  animation: App-logo-spin infinite 25s linear;
   height: 40vmin;
 }
 
-.App-header {
+.whatsapp-container {
   background-color: #47c057;
   min-height: 100vh;
   display: flex;
@@ -58,4 +57,23 @@ label + input {
  but to be sure you could use an id or class for that button */
 input + input {
   float: right;
+}
+
+#container {
+  height: 90%;
+  width: 90%;
+  display: flex;
+}
+#leftThing {
+  width: 35%;
+  margin-left: 0%;
+  text-align: left;
+}
+#centerThing {
+  width: 55%;
+  text-align: center;
+}
+#rightThing {
+  text-align: right;
+  width: 10%;
 }

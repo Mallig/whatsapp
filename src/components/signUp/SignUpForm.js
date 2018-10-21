@@ -17,7 +17,7 @@ class SignUpForm extends React.Component {
   extractFormData = (username, password, confirmPassword) => {
     return {username: username.value, 
             password: password.value, 
-            valid:    this.validateData(password.value, confirmPassword.value)}
+            valid:    this.verifyPassword(password.value, confirmPassword.value)}
   }
 
   handleSubmit = (e) => {
@@ -25,10 +25,6 @@ class SignUpForm extends React.Component {
     this.data = this.extractFormData(...e.target)
     this.setState({data: this.data})
     this.props.onSubmit(this.data)
-  }
-
-  validateData = (password, confirmPassword) => {
-    return this.verifyPassword(password, confirmPassword)
   }
 
   verifyPassword = (password, confirmPassword) => {

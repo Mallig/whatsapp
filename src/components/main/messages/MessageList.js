@@ -4,7 +4,9 @@ import Message from './Message'
 const MessageList = (props) => (
     <div>
         {props.messages.map(message => {
-            return <Message content={message.content} sender={message.sender}/>
+            // TODO: SORT THIS OUT - WANT TO USE RANDOM NUMBER GENERATOR FOR KEY
+            // NOT SURE HOW IMPORTANT THIS IS, BUT I DOUBT CONTENT AS A KEY IS A GOOD IDEA.
+            return <Message key={message.content} content={message.content} sender={message.sender}/>
         })} 
     </div>
 )

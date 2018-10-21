@@ -1,8 +1,8 @@
 import React from 'react';
-import logo from './logo.svg';
 import SignUpForm from './components/signUp/SignUpForm'
 import MainScreen from './components/main/MainScreen'
 import './App.css';
+import Navbar from './components/main/Navbar';
 class App extends React.Component {
 
   constructor(props) {
@@ -21,13 +21,13 @@ class App extends React.Component {
   render() {
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
+        <div className="whatsapp-container">
+          <Navbar/>
           {this.state.loggedIn 
           ? <MainScreen username={this.state.username}/>
           : <SignUpForm loggedIn={this.state.loggedIn} onSubmit={this.onSubmit}/>
           }
-        </header>
+        </div>
       </div>
     )
   }

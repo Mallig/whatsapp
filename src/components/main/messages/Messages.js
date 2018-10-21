@@ -20,7 +20,7 @@ class Messages extends React.Component {
     }
 
     render() {
-        return <div style={{textAlign: 'left'}}>
+        return <div id='content'>
             <MessageList messages={this.state.dummyMessages}/>
         </div>
         
