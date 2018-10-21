@@ -1,11 +1,6 @@
 .App {
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 25s linear;
-  height: 40vmin;
-}
-
 .whatsapp-container {
   background-color: #47c057;
   min-height: 100vh;

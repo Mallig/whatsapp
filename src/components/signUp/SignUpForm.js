@@ -1,6 +1,5 @@
 import React from 'react'
 import InvalidDetailsError from './InvalidDetailsError';
-import WelcomeMessage from './WelcomeMessage'
 
 class SignUpForm extends React.Component {
 
@@ -38,19 +37,16 @@ class SignUpForm extends React.Component {
   render() {
     return (
       <div>
-        {(!this.props.loggedIn
-          ? <div><h1>hello you want to sign up</h1>
-            <form onSubmit={this.handleSubmit.bind(this)}>
-              <label htmlFor='username'>Enter your username :</label>
-              <input name='username' id='username' type='text' required/><br/>
-              <label htmlFor='password'>Enter your password:</label>
-              <input name='password' id='password' type='password' required/><br/>
-              <label htmlFor='confirm-password'>Confirm your password:</label>
-              <input name='confirmPassword' id='confirmPassword' type='password' required/><br/>
-              <button type='submit'>submit that s**t</button>
-            </form></div>
-          : <WelcomeMessage name={this.state.data.username}/>
-        )}
+        <h1>hello you want to sign up</h1>
+        <form onSubmit={this.handleSubmit.bind(this)}>
+          <label htmlFor='username'>Enter your username :</label>
+          <input name='username' id='username' type='text' required/><br/>
+          <label htmlFor='password'>Enter your password:</label>
+          <input name='password' id='password' type='password' required/><br/>
+          <label htmlFor='confirm-password'>Confirm your password:</label>
+          <input name='confirmPassword' id='confirmPassword' type='password' required/><br/>
+          <button type='submit'>submit that s**t</button>
+        </form>
         <InvalidDetailsError invalidDetails={!this.state.data.valid}/>
       </div>
     )
