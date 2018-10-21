@@ -79,3 +79,8 @@ input + input {
   text-align: center;
   font-size: 40px;
 }
+#message {
+  border-style: solid;
+  border: black;
+  border-width: 2px;
+}

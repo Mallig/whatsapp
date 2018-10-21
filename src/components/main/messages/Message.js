@@ -1,7 +1,7 @@
 import React from 'react'
 
 const Message = ({sender, content}) => (
-    <div>
+    <div id='message'>
         <h2>{sender} sent this:</h2>
         <p>{content}</p>
     </div>
