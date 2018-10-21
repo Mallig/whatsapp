@@ -1,10 +1,14 @@
 import React from 'react'
+import ConversationsList from './ConversationsList'
 
 class LeftThing extends React.Component {
 
     render() {
         return (
-            <div>This is the left thing!</div>
+            <div>
+                <h3>This is the header of the left thing.</h3>
+                <ConversationsList/>
+            </div>
         )
     }
 }
