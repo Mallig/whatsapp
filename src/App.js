@@ -25,7 +25,7 @@ class App extends React.Component {
           <Navbar/>
           {this.state.loggedIn 
           ? <MainScreen username={this.state.username}/>
-          : <SignUpForm loggedIn={this.state.loggedIn} onSubmit={this.onSubmit}/>
+          : <SignUpForm onSubmit={this.onSubmit}/>
           }
         </div>
       </div>

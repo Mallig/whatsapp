@@ -14,9 +14,10 @@ class SignUpForm extends React.Component {
   }
 
   extractFormData = (username, password, confirmPassword) => {
+    const valid = this.verifyPassword(password.value, confirmPassword.value)
     return {username: username.value, 
-            password: password.value, 
-            valid:    this.verifyPassword(password.value, confirmPassword.value)}
+            password: valid ? password.value : "", 
+               valid: valid}
   }
 
   handleSubmit = (e) => {
@@ -27,7 +28,7 @@ class SignUpForm extends React.Component {
   }
 
   verifyPassword = (password, confirmPassword) => {
-    if (    (password !== confirmPassword)
+    if ((password !== confirmPassword)
         || !(password.length >= 4)) {
         return false
     }
