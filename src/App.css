@@ -43,7 +43,7 @@ label + input {
   width: 30%;
   /* large margin-right to force the next element to the new-line
      and margin-left to create a gutter between the label and input */
-  margin: 0 30% 0 4%;
+  margin: 0 30% 0 0%;
 }
 
 /* only the submit button is matched by this selector,
@@ -83,4 +83,8 @@ input + input {
   border-style: solid;
   border: black;
   border-width: 2px;
+}
+#signUp-username, #signUp-password, #signUp-confirmPassword {
+  text-align: left;
+  margin: none;
 }
