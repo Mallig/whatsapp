@@ -1,11 +1,11 @@
 import React from 'react'
 import Messages from './messages/Messages'
 
-const MainScreen = (props) => (
+const MainScreen = ({username}) => (
     <div id='container' >
         <section id='leftThing'>this is the left</section>
         <section id='centerThing'>
-            <p>This is the main screen of Mal and Hugo's Whatsapp clone. Welcome, {props.username}!</p>
+            <p>This is the main screen of Mal and Hugo's Whatsapp clone. Welcome, {username}!</p>
             <Messages/>
         </section>
         <section id='rightThing'>This is the right</section>
