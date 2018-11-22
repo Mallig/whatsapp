@@ -1,5 +1,6 @@
 import React from 'react'
-import dummyConvs from './DummyConversations'
+import {dummyConvs} from './DummyConversations'
+import {Conversation} from './Conversation'
 
 class ConversationsList extends React.Component {
 
@@ -14,10 +15,7 @@ class ConversationsList extends React.Component {
         return (
             <div id='itemOnConversationsList'>
                 {this.state.dummyConversations.map((convo) => {
-                    return <div>
-                            <h5>{convo.participant}</h5>
-                            <p>{convo.displayMessage}</p>
-                        </div>
+                    return <Conversation key={convo.displayMessage} convo={convo}/>
                 })}
             </div>
         )
