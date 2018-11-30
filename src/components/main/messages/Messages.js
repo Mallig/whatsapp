@@ -8,12 +8,24 @@ class Messages extends React.Component {
         this.state = {
             dummyMessages: [
                 {
-                    content: "Message content",
+                    content: "Hey Jon, how are you?",
                     sender: "Mal"
                 },
                 {
-                    content: "Message 2 content",
+                    content: "I'm great thanks, have you been well?",
                     sender: "Jon"
+                },
+                {
+                    content: "Actually, I'm in a bit of a sticky situation",
+                    sender: "Jon"
+                },
+                {
+                    content: "Could you help me out? I need a lift from Mexico",
+                    sender: "Jon"
+                },
+                {
+                    content: "Sorry to hear that mate, I'm a bit busy atm :L",
+                    sender: "Mal"
                 }
             ]
         }

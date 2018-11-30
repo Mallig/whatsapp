@@ -1,6 +1,5 @@
 import React from 'react'
 import ConversationsList from './ConversationsList'
-import styled from 'styled-components'
 
 class LeftThing extends React.Component {
 
