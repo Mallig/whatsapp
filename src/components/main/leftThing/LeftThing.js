@@ -1,5 +1,5 @@
 import React from 'react'
-import ConversationsList from './ConversationsList'
+import ConversationsList from './conversation/ConversationsList'
 
 class LeftThing extends React.Component {
 

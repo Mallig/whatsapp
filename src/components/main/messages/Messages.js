@@ -26,6 +26,18 @@ class Messages extends React.Component {
                 {
                     content: "Sorry to hear that mate, I'm a bit busy atm :L",
                     sender: "Mal"
+                },
+                {
+                    content: "You suck",
+                    sender: "Jon"
+                },
+                {
+                    content: "I'm going to die in jail...",
+                    sender: "Jon"
+                },
+                {
+                    content: "mal has read this message",
+                    sender: "Mal"
                 }
             ]
         }

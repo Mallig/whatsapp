@@ -1,10 +1,11 @@
-import React from 'react'
+import styled from 'styled-components'
 
-const Navbar = () => (
-    <div id='navBar'>
-        <button href='/'>Home</button>
-        This is the Navbar
-    </div>
-)
+const Navbar = styled.div`
+    width: 100%;
+    height: 20%;
+    text-align: center;
+    font-size: 40px;
+    color: black;
+`
 
 export default Navbar

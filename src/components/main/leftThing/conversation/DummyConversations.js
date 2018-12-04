@@ -32,7 +32,7 @@ export const dummyConvs = [
         displayMessage: "Itlly gone tits up..."
     },
     {
-        participant: "Theresa",
+        participant: "Harry",
         displayMessage: "It's really gone p..."
     }
 ]

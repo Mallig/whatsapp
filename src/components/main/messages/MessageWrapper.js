@@ -4,7 +4,7 @@ const MessageWrapper = styled.div`
     border-style: solid;
     border-width: 1px;
     color: blue;
-    background: white;
+    background: ${props => (props.sentByUser) ? 'white' : 'beige' };
     width: 300px;
     position: relative;
     left: ${props => (props.sentByUser) ? '150px' : '0px' };

@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-const MessageSender = styled.div`
+const MessageSender = styled.h3`
     color: purple;
     text-align: left;
 `;

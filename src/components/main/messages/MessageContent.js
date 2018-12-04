@@ -1,8 +1,8 @@
 import styled from "styled-components";
 
-const MessageContent = styled.div`
+const MessageContent = styled.p`
     font-family: ${ props => props.theme.font };
-    color: red;
+    color: black;
     text-align: right;
 `;
 

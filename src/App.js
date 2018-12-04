@@ -21,7 +21,10 @@ class App extends React.Component {
   render() {
     return (
       <div className="whatsapp-container">
-        <Navbar/>
+        <Navbar>
+          <button href='/'>Home</button>
+          This is the Navbar
+        </Navbar>
         <div id='mainSection'>
           {this.state.loggedIn 
           ? <MainScreen username={this.state.username}/>
