@@ -38,6 +38,18 @@ class Messages extends React.Component {
                 {
                     content: "mal has read this message",
                     sender: "Mal"
+                },
+                {
+                    content: "are you going to reply?",
+                    sender: "John"
+                },
+                {
+                    content: "no",
+                    sender: "Mal"
+                },
+                {
+                    content: "nice knowing you",
+                    sender: "John"
                 }
             ]
         }

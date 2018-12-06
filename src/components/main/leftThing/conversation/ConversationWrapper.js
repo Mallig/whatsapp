@@ -5,7 +5,6 @@ const ConversationWrapper = styled.div`
     border-width: 1px;
     color: blue;
     background: white;
-    width: 300px;
 `
 
 export default ConversationWrapper;

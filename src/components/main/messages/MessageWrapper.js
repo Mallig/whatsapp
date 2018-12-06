@@ -5,9 +5,10 @@ const MessageWrapper = styled.div`
     border-width: 1px;
     color: blue;
     background: ${props => (props.sentByUser) ? 'white' : 'beige' };
-    width: 300px;
+    width: 30%;
     position: relative;
-    left: ${props => (props.sentByUser) ? '150px' : '0px' };
+    left: ${props => (props.sentByUser) ? '50%' : '10%' };
+    padding: 10px;
 `;
 
 export default MessageWrapper;

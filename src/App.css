@@ -17,33 +17,10 @@
   display: flex;
   justify-content: center;
 }
-#leftThing {
-  width: 25%;
-  text-align: left;
-  padding: 0% 2% 0% 0%;
-}
-#centerThing {
-  width: 65%;
-  height: 80%;
-  text-align: center;
-}
-#rightThing {
-  width: 10%;
-  text-align: right;
-  float: right;
-  padding: 0% 2% 0% 0%;
-}
+
 #navBar {
   width: 100%;
   height: 20%;
   text-align: center;
   font-size: 40px;
-}
-#message {
-  border-style: solid;
-  border: black;
-  border-width: 2px;
-}
-#itemOnConversationsList {
-  
 }
