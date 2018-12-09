@@ -1,0 +1,48 @@
+{
+    "messages": [
+        {
+            "content": "Hey Toby, how are you?",
+            "sender": "Mal"
+        },
+        {
+            "content": "I'm great thanks, have you been well?",
+            "sender": "Toby"
+        },
+        {
+            "content": "Actually, I'm in a bit of a sticky situation",
+            "sender": "Toby"
+        },
+        {
+            "content": "Could you help me out? I need a lift from Mexico",
+            "sender": "Toby"
+        },
+        {
+            "content": "Sorry to hear that mate, I'm a bit busy atm :L",
+            "sender": "Mal"
+        },
+        {
+            "content": "You suck",
+            "sender": "Toby"
+        },
+        {
+            "content": "I'm going to die in jail...",
+            "sender": "Toby"
+        },
+        {
+            "content": "mal has read this message",
+            "sender": "Mal"
+        },
+        {
+            "content": "are you going to reply?",
+            "sender": "Toby"
+        },
+        {
+            "content": "no",
+            "sender": "Mal"
+        },
+        {
+            "content": "nice knowing you",
+            "sender": "Toby"
+        }
+    ]
+}

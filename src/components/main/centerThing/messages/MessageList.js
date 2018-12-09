@@ -1,7 +1,7 @@
 import React from 'react'
 
 import Message from './Message'
-import ListWrapper from '../ListWrapper'
+import ListWrapper from '../../ListWrapper'
 
 const MessageList = ({messages}) => (
     <ListWrapper inputHeight="60vh">

@@ -19,7 +19,7 @@ class LeftThing extends React.Component {
         return (
             <LeftThingWrapper>
                     <h3>This is the header of the left thing.</h3>
-                    <ConversationsList/>
+                    <ConversationsList loadConversation={this.props.loadConversation}/>
             </LeftThingWrapper>
         )
     }

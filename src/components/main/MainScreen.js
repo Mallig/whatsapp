@@ -1,7 +1,8 @@
 import React from 'react'
-import Messages from './messages/Messages'
+import Messages from './centerThing/messages/Messages'
 import LeftThing from './leftThing/LeftThing'
 import styled from 'styled-components'
+import dummyConvs from '../../resources/DummyConversations'
 
 const MainScreenWrapper = styled.div`
     height: 100%;
@@ -10,18 +11,37 @@ const MainScreenWrapper = styled.div`
     justify-content: center;
 `
 
-const MainScreen = ({username}) => (
-    <MainScreenWrapper>
-        <LeftThing/>
-        <CenterThingWrapper>
-            <h2>This is the main screen of Mal and Hugo's Whatsapp clone. Welcome, {username}!</h2>
-            <Messages/>
-        </CenterThingWrapper>
-        <RightThingWrapper>
-            this is the right thing
+
+class MainScreen extends React.Component {
+
+    constructor(props) {
+        super(props)
+        this.state = {
+            interlocutor: undefined
+        }
+    }
+
+    findNameById = id => {
+        
+    }
+
+    loadConversation = (id) => {
+        this.state.interlocutor = this.findNameById(id)
+    }
+
+    render() {
+        return <MainScreenWrapper>
+            <LeftThing loadConversation={this.loadConversation}/>
+            <CenterThingWrapper>
+                <h2>This is the main screen of Mal and Hugo's Whatsapp clone. Welcome, {username}!</h2>
+                <Messages interlocutor={this.state.interlocutor} />
+            </CenterThingWrapper>
+            <RightThingWrapper>
+                this is the right thing
         </RightThingWrapper>
-    </MainScreenWrapper>
-)
+        </MainScreenWrapper>
+    }
+}
 
 export default MainScreen
 
