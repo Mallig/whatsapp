@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-const Navbar = styled.div`
+const NavbarWrapper = styled.div`
     width: 100%;
     height: 20%;
     text-align: center;
@@ -8,4 +8,4 @@ const Navbar = styled.div`
     color: black;
 `
 
-export default Navbar
+export default NavbarWrapper
