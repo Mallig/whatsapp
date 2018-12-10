@@ -29,3 +29,6 @@ I can upload pictures to a chat
 
 <img src="images/welcome_page.png" width="600">
 <img src="images/page_layout.png" width="600">
+
+MainScreen -> LeftThing -> ConversationsList -> Conversation
+MainScreen -> CenterThing -> MessagesContainer -> MessageList -> Message
