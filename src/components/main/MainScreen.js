@@ -1,18 +1,9 @@
 import React from 'react'
 import Messages from './centerThing/messages/Messages'
-import LeftThing from './leftThing/LeftThing'
+import {LeftThing} from './leftThing/LeftThing'
 import styled from 'styled-components'
-import dummyConvs from '../../resources/DummyConversations'
 
-const MainScreenWrapper = styled.div`
-    height: 100%;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-`
-
-
-class MainScreen extends React.Component {
+export class MainScreen extends React.Component {
 
     constructor(props) {
         super(props)
@@ -26,24 +17,29 @@ class MainScreen extends React.Component {
     }
 
     loadConversation = (id) => {
-        this.state.interlocutor = this.findNameById(id)
+        this.setState({interlocutor: this.findNameById(id)})
     }
 
     render() {
         return <MainScreenWrapper>
             <LeftThing loadConversation={this.loadConversation}/>
             <CenterThingWrapper>
-                <h2>This is the main screen of Mal and Hugo's Whatsapp clone. Welcome, {username}!</h2>
+                <h2>This is the main screen of Mal and Hugo's Whatsapp clone. Welcome, {this.props.username}!</h2>
                 <Messages interlocutor={this.state.interlocutor} />
             </CenterThingWrapper>
             <RightThingWrapper>
                 this is the right thing
-        </RightThingWrapper>
+            </RightThingWrapper>
         </MainScreenWrapper>
     }
 }
 
-export default MainScreen
+const MainScreenWrapper = styled.div`
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+`
 
 const RightThingWrapper = styled.section`
     border-style: solid;

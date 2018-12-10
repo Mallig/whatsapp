@@ -13,7 +13,7 @@ const LeftThingWrapper = styled.section`
     text-align: left;
     padding: 0% 2% 2% 2%;
 `
-class LeftThing extends React.Component {
+export class LeftThing extends React.Component {
 
     render() {
         return (
@@ -24,5 +24,3 @@ class LeftThing extends React.Component {
         )
     }
 }
-
-export default LeftThing

@@ -1,6 +1,6 @@
 import React from 'react';
 import SignUpForm from './components/signUp/SignUpForm'
-import MainScreen from './components/main/MainScreen'
+import {MainScreen} from './components/main/MainScreen'
 import './App.css';
 import NavbarWrapper from './components/main/NavbarWrapper';
 class App extends React.Component {
