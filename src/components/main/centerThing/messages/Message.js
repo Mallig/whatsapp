@@ -1,8 +1,5 @@
 import React from 'react'
-
 import styled from "styled-components";
-import MessageSender from "./MessageSender"
-import MessageContent from "./MessageContent"
 
 const currentUser = "Mal"
 
@@ -23,6 +20,15 @@ const Message = ({sender, content}) =>
         <MessageContent>"{content}"</MessageContent>
     </MessageWrapper>
 
-
-
 export default Message
+
+const MessageSender = styled.h3`
+    color: purple;
+    text-align: left;
+`;
+
+const MessageContent = styled.p`
+    font-family: ${ props => props.theme.font };
+    color: black;
+    text-align: right;
+`;

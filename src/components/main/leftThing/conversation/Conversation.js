@@ -1,6 +1,6 @@
 import React from 'react'
+import styled from 'styled-components'
 
-import ConversationWrapper from './ConversationWrapper'
 import ConvoParticipant from './ConvoParticipant'
 import ConvoMessage from './ConvoMessage'
 
@@ -13,3 +13,10 @@ export const Conversation = ({convo, loadConversation}) => {
 }
 
 export default Conversation;
+
+const ConversationWrapper = styled.div`
+    border-style: solid;
+    border-width: 1px;
+    color: blue;
+    background: white;
+`
