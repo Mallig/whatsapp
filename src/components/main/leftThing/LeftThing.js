@@ -1,8 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-
 import ConversationsList from './conversation/ConversationsList'
-
 
 const LeftThingWrapper = styled.section`
     border-style: solid;
@@ -13,14 +11,8 @@ const LeftThingWrapper = styled.section`
     text-align: left;
     padding: 0% 2% 2% 2%;
 `
-export class LeftThing extends React.Component {
-
-    render() {
-        return (
-            <LeftThingWrapper>
-                    <h3>This is the header of the left thing.</h3>
-                    <ConversationsList loadConversation={this.props.loadConversation}/>
-            </LeftThingWrapper>
-        )
-    }
-}
+export const LeftThing = (props) => 
+    <LeftThingWrapper>
+            <h3>This is the header of the left thing.</h3>
+            <ConversationsList loadConversation={props.loadConversation}/>
+    </LeftThingWrapper>

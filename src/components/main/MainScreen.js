@@ -13,7 +13,7 @@ export class MainScreen extends React.Component {
     }
 
     findNameById = id => {
-        
+        return "Jon"
     }
 
     loadConversation = (id) => {
