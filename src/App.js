@@ -5,8 +5,8 @@ import './App.css';
 import NavbarWrapper from './components/main/NavbarWrapper';
 class App extends React.Component {
 
-  constructor(props) {
-    super(props)
+  constructor() {
+    super()
     this.state = {
       loggedIn: true,
       formData: {valid: true},
@@ -14,10 +14,12 @@ class App extends React.Component {
     }
   }
 
-  onSubmit = (data) => {
-    this.setState({loggedIn: data.valid, formData: data, username: data.username})
-  }
-  
+  onSubmit = (data) => this.setState({
+    loggedIn: data.valid,
+    formData: data,
+    username: data.username
+  })
+
   render() {
     return (
       <div className="whatsapp-container">

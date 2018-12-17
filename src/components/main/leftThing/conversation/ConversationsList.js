@@ -6,8 +6,8 @@ import ListWrapper from '../../ListWrapper'
 
 class ConversationsList extends React.Component {
 
-    constructor(props) {
-        super(props)
+    constructor() {
+        super()
         this.state = {
             dummyConversations: dummyConvs
         }

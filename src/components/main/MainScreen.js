@@ -5,20 +5,16 @@ import styled from 'styled-components'
 
 export class MainScreen extends React.Component {
 
-    constructor(props) {
-        super(props)
+    constructor() {
+        super()
         this.state = {
             interlocutor: undefined
         }
     }
 
-    findNameById = id => {
-        return "Jon"
-    }
+    findNameById = id => "Jon"
 
-    loadConversation = (id) => {
-        this.setState({interlocutor: this.findNameById(id)})
-    }
+    loadConversation = id => this.setState({interlocutor: this.findNameById(id)})
 
     render() {
         return <MainScreenWrapper>

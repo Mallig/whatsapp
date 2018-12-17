@@ -3,8 +3,8 @@ import InvalidDetailsError from './InvalidDetailsError';
 
 class SignUpForm extends React.Component {
 
-  constructor(props) {
-    super(props)
+  constructor() {
+    super()
     this.state = {
       data: {
         username: "",
