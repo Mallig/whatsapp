@@ -18,6 +18,7 @@ export class MainScreen extends React.Component {
 
     render() {
         return <MainScreenWrapper>
+            This shit is on heroku, brother!
             <LeftThing loadConversation={this.loadConversation}/>
             <CenterThing username={this.props.username} interlocutor={this.state.interlocutor}/>
             <RightThingWrapper>
