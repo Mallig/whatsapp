@@ -16,8 +16,9 @@
     "webpack": "4.19.1"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "webpack --mode production --config webpack.config.js",
+    "start": "react-scripts build && yarn global add serve && serve -s build",
+    "dev-start": "react-scripts start",
+    "build": "react-scripts build",
     "eject": "react-scripts eject",
     "test": "jest",
     "test:watch": "jest --watch"
