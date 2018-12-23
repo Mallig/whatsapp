@@ -8,13 +8,14 @@ jobs:
     <<: *defaults
     steps:
       - checkout
-      - restore_cache: # special step to restore the dependency cache
-          key: dependency-cache-{{ checksum "package.json" }}
+      - restore_cache:
+          name: Restore yarn package cache
+          key: yarn-dependency-cache-{{ checksum "yarn.lock" }}
       - run:
-          name: Install
+          name: Install dependencies 
           command: yarn install
-      - save_cache: # special step to save the dependency cache
-          key: dependency-cache-{{ checksum "package.json" }}
+      - save_cache:
+          key: yarn-dependency-cache-{{ checksum "yarn.lock" }}
           paths:
             - ~/.cache/yarn
             - ./node_modules

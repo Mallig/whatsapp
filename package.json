@@ -17,7 +17,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "webpack --mode production",
+    "build": "webpack --mode production --config webpack.config.js",
     "eject": "react-scripts eject",
     "test": "jest",
     "test:watch": "jest --watch"
