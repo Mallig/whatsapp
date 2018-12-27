@@ -23,12 +23,14 @@ jobs:
 
   deploy:
     <<: *defaults
+    environment:
+      HEROKU_APP: "whatsapp-react"
     steps:
       - checkout
       - run:
           name: Deploy to heroku
           command: |
-            git push https://heroku:$HEROKU_API_KEY@git.heroku.com/whatsapp-react.git master
+            git push https://heroku:$HEROKU_API_KEY@git.heroku.com/$HEROKU_APP.git master
 
 workflows:
   version: 2
