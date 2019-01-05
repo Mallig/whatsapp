@@ -1,6 +1,7 @@
 import React from 'react'
 import {CenterThing} from './centerThing/CenterThing'
 import {LeftThing} from './leftThing/LeftThing'
+import {UsersClient} from './UsersClient'
 import styled from 'styled-components'
 
 export class MainScreen extends React.Component {
@@ -8,8 +9,19 @@ export class MainScreen extends React.Component {
     constructor() {
         super()
         this.state = {
-            interlocutor: undefined
+            interlocutor: undefined,
+            users: undefined
         }
+    }
+
+    componentDidMount() {
+        UsersClient.fetchUsers()
+        .then(res => {
+            this.setState({users: res.json()})
+        })
+        .catch(err => {
+            console.log(err)
+        })
     }
 
     findNameById = id => "Jon"
@@ -21,7 +33,7 @@ export class MainScreen extends React.Component {
             <LeftThing loadConversation={this.loadConversation}/>
             <CenterThing username={this.props.username} interlocutor={this.state.interlocutor}/>
             <RightThingWrapper>
-                this is the right thing
+                {this.state.users}
             </RightThingWrapper>
         </MainScreenWrapper>
     }
