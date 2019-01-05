@@ -17,7 +17,7 @@ export class MainScreen extends React.Component {
     componentDidMount() {
         UsersClient.fetchUsers()
         .then(res => {
-            this.setState({users: res.json()})
+            this.setState({users: res.data.map(each => each["id"] + ", " + each["username"] + " \n")})
         })
         .catch(err => {
             console.log(err)

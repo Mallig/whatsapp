@@ -3,13 +3,19 @@ import axios from 'axios'
 export class UsersClient {
 
     static async fetchUsers() {
-        let options = {
+        const options = {
             method: 'get',
             url: 'http://whatsapp-users.herokuapp.com/users',
             headers: {
                 'Content-Type': 'application/json'
             }
         }
-        return await axios(options)
+        try {
+            const response = await axios(options)
+            return response
+        } catch (error) {
+            console.error(error)
+            return null
+        }
     }
 }
