@@ -15,7 +15,7 @@ export class UsersClient {
             return response
         } catch (error) {
             console.error(error)
-            return null
+            return error
         }
     }
 }
