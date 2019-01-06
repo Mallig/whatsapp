@@ -4,23 +4,35 @@ import MainScreen from './components/main/MainScreen'
 import './App.css';
 import NavbarWrapper from './components/main/NavbarWrapper';
 import { Cookies } from 'react-cookie'
-import { generateToken } from './helpers/jwt'
+import { generateToken, verifyToken } from './helpers/jwt'
+
+const cookieName = 'whatsappSession'
+const cookies = new Cookies()
 
 class App extends React.Component {
 
   constructor() {
     super()
     this.state = {
-      loggedIn: false,
       formData: {valid: true},
       username: undefined,
-      cookies: new Cookies()
+      loggedIn: false
+    }
+  }
+
+  componentDidMount() {
+    this.loggedIn()
+  }
+
+  async loggedIn() {
+    if (cookies.get(cookieName)) {
+      const res = await verifyToken(cookies.get(cookieName))
+      this.setState({loggedIn: res})
     }
   }
 
   onSubmit = (data) => {
     this.setState({
-      loggedIn: data.valid,
       formData: data,
       username: data.username
     })
@@ -29,7 +41,8 @@ class App extends React.Component {
       username: data.username,
       id: 1
     })
-    this.state.cookies.set("whatsappSession", whatsappCookie, "/") 
+    cookies.set(cookieName, whatsappCookie, "/")
+    this.setState({loggedIn: true})
   }
 
   render() {
@@ -39,13 +52,11 @@ class App extends React.Component {
           <button href='/'>Home</button>
           This is the Navbar
         </NavbarWrapper>
-
           <div id='mainSection'>
-            {this.state.loggedIn 
+            {this.state.loggedIn
             ? <MainScreen username={this.state.username}/>
             : <SignUpForm onSubmit={this.onSubmit}/>}
           </div>
-
       </div>
     )
   }
