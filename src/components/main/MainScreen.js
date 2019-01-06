@@ -3,8 +3,9 @@ import {CenterThing} from './centerThing/CenterThing'
 import {LeftThing} from './leftThing/LeftThing'
 import {UsersClient} from './UsersClient'
 import styled from 'styled-components'
+import { withCookies } from 'react-cookie';
 
-export class MainScreen extends React.Component {
+class MainScreen extends React.Component {
 
     constructor() {
         super()
@@ -38,6 +39,8 @@ export class MainScreen extends React.Component {
         </MainScreenWrapper>
     }
 }
+
+export default withCookies(MainScreen)
 
 const MainScreenWrapper = styled.div`
     height: 100%;
