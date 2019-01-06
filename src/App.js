@@ -4,7 +4,7 @@ import MainScreen from './components/main/MainScreen'
 import './App.css';
 import NavbarWrapper from './components/main/NavbarWrapper';
 import { Cookies } from 'react-cookie'
-import { generateToken, verifyToken } from './helpers/jwt'
+import { generateToken, verifyToken, currentUser } from './helpers/jwt'
 
 const cookieName = 'whatsappSession'
 const cookies = new Cookies()
@@ -22,6 +22,16 @@ class App extends React.Component {
 
   componentDidMount() {
     this.loggedIn()
+  }
+
+  currentUser = () => {
+      currentUser()
+      .then(res => {
+        return res || this.state.username
+      })
+      .catch(err => {
+        console.log(err)
+      })
   }
 
   async loggedIn() {
@@ -53,8 +63,10 @@ class App extends React.Component {
           This is the Navbar
         </NavbarWrapper>
           <div id='mainSection'>
+          {console.log(this.currentUser())}
+          {console.log('this.currentUser()')}
             {this.state.loggedIn
-            ? <MainScreen username={this.state.username}/>
+            ? <MainScreen username={this.currentUser} />
             : <SignUpForm onSubmit={this.onSubmit}/>}
           </div>
       </div>

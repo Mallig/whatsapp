@@ -13,8 +13,11 @@ const CenterThingWrapper = styled.section`
     padding: 0% 0% 2% 0%;
 `
 
-export const CenterThing = (props) =>
-    <CenterThingWrapper>
-        <h2>This is the main screen of Mal and Hugo's Whatsapp clone. Welcome, {props.username}!</h2>
-        <MessagesContainer interlocutor={props.interlocutor} />
-    </CenterThingWrapper>
+export class CenterThing extends React.Component {
+    render() {
+        return <CenterThingWrapper>
+                <h2>This is the main screen of Mal and Hugo's Whatsapp clone. Welcome, {this.props.username()}!</h2>
+                <MessagesContainer interlocutor={this.props.interlocutor} />
+            </CenterThingWrapper>
+    }
+}
