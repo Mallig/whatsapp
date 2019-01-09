@@ -2,6 +2,7 @@ import React from 'react'
 import {CenterThing} from './centerThing/CenterThing'
 import {LeftThing} from './leftThing/LeftThing'
 import {UsersClient} from './UsersClient'
+import {ConversationsClient} from './ConversationsClient'
 import styled from 'styled-components'
 
 class MainScreen extends React.Component {
@@ -10,7 +11,8 @@ class MainScreen extends React.Component {
         super()
         this.state = {
             interlocutor: undefined,
-            users: undefined
+            users: undefined,
+            conversation: undefined
         }
     }
 
@@ -21,6 +23,10 @@ class MainScreen extends React.Component {
         })
         .catch(err => {
             console.log(err)
+        })
+        ConversationsClient.fetchConversation(1, 2)
+        .then(res => {
+            this.setState({conversation: res.data.map(message => message["id"] + ", " + message["content"] + "\n")})
         })
     }
 
@@ -34,6 +40,7 @@ class MainScreen extends React.Component {
             <CenterThing username={this.props.username} interlocutor={this.state.interlocutor}/>
             <RightThingWrapper>
                 {this.state.users}
+                {this.state.conversation}
             </RightThingWrapper>
         </MainScreenWrapper>
     }
