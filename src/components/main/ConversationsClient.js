@@ -2,10 +2,11 @@ import axios from 'axios'
 
 export class ConversationsClient {
 
-    static async fetchConversation(user_1, user_2) {
+    static async fetchConversation(userOne, userTwo) {
         const options = {
             method: 'get',
-            url: `http://whatsapp-conversations.herokuapp.com/${user_1}/${user_2}`,
+            url: `http://whatsapp-conversations.herokuapp.com/${userOne}/${userTwo}`,
+            // url: `http://localhost:9292/${userOne}/${userTwo}`,
             headers: {
                 'Content-Type': 'application/json'
             }

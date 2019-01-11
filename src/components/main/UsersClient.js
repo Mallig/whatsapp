@@ -6,6 +6,7 @@ export class UsersClient {
         const options = {
             method: 'get',
             url: 'http://whatsapp-users.herokuapp.com/users',
+            // url: 'http://localhost:9494/users',
             headers: {
                 'Content-Type': 'application/json'
             }

@@ -18,7 +18,7 @@ class ConversationsList extends React.Component {
         return (
             <ListWrapper inputHeight="70vh" >
                 {this.state.dummyConversations.map((convo) =>
-                    <Conversation convo={convo} loadConversation={this.props.loadConversation}/>
+                    <Conversation key={convo.id} convo={convo} loadConversation={this.props.loadConversation}/>
                 )}
             </ListWrapper>
         )

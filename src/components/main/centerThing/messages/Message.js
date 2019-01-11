@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from "styled-components";
 
-const currentUser = "Mal"
+const currentUser = 1
 
 const MessageWrapper = styled.div`
     border-style: solid;
@@ -14,9 +14,9 @@ const MessageWrapper = styled.div`
     padding: 10px;
 `
 
-const Message = ({sender, content}) =>
-    <MessageWrapper sentByUser={(sender === currentUser)}>
-        <MessageSender>{sender}:</MessageSender>
+const Message = ({sender_id, content}) =>
+    <MessageWrapper sentByUser={(sender_id === currentUser)}>
+        <MessageSender>{sender_id}:</MessageSender>
         <MessageContent>"{content}"</MessageContent>
     </MessageWrapper>
 

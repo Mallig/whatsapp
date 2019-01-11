@@ -11,13 +11,17 @@ export const generateToken = (user) => {
         id:         user.id
     }
     return jwt.sign(u, secret_key(), {
-        expiresIn: 20
+        expiresIn: 100 * 100
     })
 }
 
 export async function verifyToken(token) {
-    const res = await verify(token)
-    return new Date(res['exp'] * 1000) - new Date() > 0
+    try {
+        const res = await verify(token)
+        return new Date(await res['exp'] * 1000 ) - new Date() > 0
+    } catch (err) {
+        console.log(err)
+    }
 }
 
 export async function currentUser(token) {
