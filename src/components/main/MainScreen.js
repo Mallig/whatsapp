@@ -34,14 +34,14 @@ class MainScreen extends React.Component {
         })
     }
 
-    componentDidUpdate(prevProps) {
-        if (prevProps.interlocutor !== this.state.interlocutor) {
+    componentDidUpdate(prevProps, prevState) {
+        if (prevState.interlocutor !== this.state.interlocutor) {
             ConversationsClient.fetchConversation(this.state.currentUserId, this.state.interlocutor)
             .then(res => {
                 this.setState({conversation: res.data})
             }).catch(err => {
                 console.log(err)
-            }) 
+            })
         }
     }
 
