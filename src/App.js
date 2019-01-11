@@ -11,11 +11,12 @@ const cookies = new Cookies()
 
 class App extends React.Component {
 
-  constructor() {
-    super()
+  constructor(props) {
+    super(props)
     this.state = {
       formData: {valid: true},
-      username: undefined,
+      currentUserName: undefined,
+      currentUserId: 1,
       loggedIn: false
     }
   }
@@ -30,6 +31,7 @@ class App extends React.Component {
       this.setState({username: res})
       return res
     } catch (err) {
+      console.log(err)
     }
   }
 
@@ -51,11 +53,11 @@ class App extends React.Component {
   onSubmit = (data) => {
     this.setState({
       formData: data,
-      username: data.username
+      currentUserName: data.username
     })
     const whatsappCookie = generateToken({
       name: data.username,
-      username: data.username,
+      currentUserName: data.username,
       id: 1
     })
     cookies.set(cookieName, whatsappCookie, "/")
@@ -73,7 +75,7 @@ class App extends React.Component {
         </NavbarWrapper>
           <div id='mainSection'>
             {this.state.loggedIn
-            ? <MainScreen username={this.currentUser} />
+            ? <MainScreen username={this.state.currentUserName} currentUserId={this.state.currentUserId}/>
             : <SignUpForm onSubmit={this.onSubmit}/>}
           </div>
       </div>

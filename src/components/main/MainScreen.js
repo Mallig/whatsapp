@@ -8,12 +8,14 @@ import styled from 'styled-components'
 
 class MainScreen extends React.Component {
 
-    constructor() {
-        super()
+    constructor(props) {
+        super(props)
         this.state = {
-            interlocutor: undefined,
+            interlocutor: 2,
             users: undefined,
-            conversation: undefined
+            conversation: [],
+            currentUserId: this.props.currentUserId,
+            username: this.props.username
         }
     }
 
@@ -25,28 +27,45 @@ class MainScreen extends React.Component {
         .catch(err => {
             console.log(err)
         })
-        ConversationsClient.fetchConversation(1, 2)
+        ConversationsClient.fetchConversation(this.state.currentUserId, this.state.interlocutor)
         .then(res => {
-            this.setState({conversation: res.data.map(message => message["id"] + ", " + message["content"] + "\n")})
+            this.setState({conversation: res.data})
+        }).catch(err => {
+            console.log(err)
         })
         .catch(err => {
           console.log(err)
         })
     }
 
-    findNameById = id => "Jon"
+    componentDidUpdate(prevProps) {
+        if (prevProps.interlocutor !== this.state.interlocutor) {
+            ConversationsClient.fetchConversation(this.state.currentUserId, this.state.interlocutor)
+            .then(res => {
+                this.setState({conversation: res.data})
+            }).catch(err => {
+                console.log(err)
+            }) 
+        }
+    }
 
-    loadConversation = id => this.setState({interlocutor: this.findNameById(id)})
+    loadConversation = id => {
+        this.setState({interlocutor: id})
+
+        ConversationsClient.fetchConversation(this.state.currentUserId, this.state.interlocutor)
+        .then(res => {
+            this.setState({conversation: res.data})
+        }).catch(err => {
+            console.log(err)
+        })
+    }
 
     render() {
         return <MainScreenWrapper>
             <LeftThing loadConversation={this.loadConversation}/>
-            <CenterThing username={this.props.username} interlocutor={this.state.interlocutor}/>
+            <CenterThing username={this.props.username} messages={this.state.conversation}/>
             <RightThingWrapper>
-                <ListWrapper fontSize='30' inputHeight='90vh'>
-                    {this.state.users}
-                    {this.state.conversation}
-                </ListWrapper>
+                This is the right thing
             </RightThingWrapper>
         </MainScreenWrapper>
     }
