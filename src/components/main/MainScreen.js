@@ -3,6 +3,7 @@ import {CenterThing} from './centerThing/CenterThing'
 import {LeftThing} from './leftThing/LeftThing'
 import {UsersClient} from './UsersClient'
 import {ConversationsClient} from './ConversationsClient'
+import ListWrapper from './ListWrapper'
 import styled from 'styled-components'
 
 class MainScreen extends React.Component {
@@ -28,6 +29,9 @@ class MainScreen extends React.Component {
         .then(res => {
             this.setState({conversation: res.data.map(message => message["id"] + ", " + message["content"] + "\n")})
         })
+        .catch(err => {
+          console.log(err)
+        })
     }
 
     findNameById = id => "Jon"
@@ -39,8 +43,10 @@ class MainScreen extends React.Component {
             <LeftThing loadConversation={this.loadConversation}/>
             <CenterThing username={this.props.username} interlocutor={this.state.interlocutor}/>
             <RightThingWrapper>
-                {this.state.users}
-                {this.state.conversation}
+                <ListWrapper fontSize='30' inputHeight='90vh'>
+                    {this.state.users}
+                    {this.state.conversation}
+                </ListWrapper>
             </RightThingWrapper>
         </MainScreenWrapper>
     }
@@ -55,7 +61,7 @@ const MainScreenWrapper = styled.div`
     justify-content: center;
 `
 
-const RightThingWrapper = styled.section`
+const RightThingWrapper = styled.div`
     border-style: solid;
     border-width: 2px;
     border-color: blue;

@@ -31,7 +31,6 @@ export class CenterThing extends React.Component {
       try {
         await currentUser()
         .then(res => {
-          console.log(res)
           this.setState({username: res})
         })
       } catch (err) {
