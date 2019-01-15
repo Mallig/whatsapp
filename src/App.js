@@ -24,20 +24,22 @@ class App extends React.Component {
     this.loggedIn()
   }
 
-  currentUser = () => {
-      currentUser()
-      .then(res => {
-        return res || this.state.username
-      })
-      .catch(err => {
-        console.log(err)
-      })
+  currentUser = async () => {
+    try {
+      let res = await currentUser(cookies.get(cookieName))
+      this.setState({username: res})
+      return res
+    } catch (err) {
+    }
   }
 
-  async loggedIn() {
+  loggedIn = async () => {
     if (cookies.get(cookieName)) {
-      const res = await verifyToken(cookies.get(cookieName))
-      this.setState({loggedIn: res})
+      try {
+        await verifyToken(cookies.get(cookieName))
+        .then(res => this.setState({loggedIn: res}))
+      } catch (err) {
+      }
     }
   }
 
@@ -63,8 +65,6 @@ class App extends React.Component {
           This is the Navbar
         </NavbarWrapper>
           <div id='mainSection'>
-          {console.log(this.currentUser())}
-          {console.log('this.currentUser()')}
             {this.state.loggedIn
             ? <MainScreen username={this.currentUser} />
             : <SignUpForm onSubmit={this.onSubmit}/>}
