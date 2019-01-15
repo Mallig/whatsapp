@@ -43,6 +43,11 @@ class App extends React.Component {
     }
   }
 
+  logout = () => {
+    cookies.remove('whatsappSession', { path: '/' })
+    this.setState({ loggedIn: false })
+  }
+
   onSubmit = (data) => {
     this.setState({
       formData: data,
@@ -63,6 +68,8 @@ class App extends React.Component {
         <NavbarWrapper>
           <button href='/'>Home</button>
           This is the Navbar
+
+          <button onClick={this.logout}> Log Out </button>
         </NavbarWrapper>
           <div id='mainSection'>
             {this.state.loggedIn
