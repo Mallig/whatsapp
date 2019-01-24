@@ -14,8 +14,47 @@ const CenterThingWrapper = styled.section`
     padding: 0% 0% 2% 0%;
 `
 
-export const CenterThing = (props) =>
-    <CenterThingWrapper>
-        <h2>This is the main screen of Mal and Hugo's Whatsapp clone. Welcome, {props.username}!</h2>
-        <MessagesContainer interlocutor={props.interlocutor} messages={props.messages}/>
-    </CenterThingWrapper>
+export class CenterThing extends React.Component {
+
+    constructor(props) {
+      super(props)
+      this.state = {
+        username: ""
+      }
+    }
+
+    componentDidMount() {
+      this.getUsername()
+    }
+
+    getUsername = async () => {
+      try {
+        await currentUser()
+        .then(res => {
+          this.setState({username: res})
+        })
+      } catch (err) {
+      }
+    }
+
+    submitFormHandler = event => {
+      event.preventDefault()
+      console.log(this.refs.message.value)
+    }
+
+    render() {
+        return <CenterThingWrapper>
+                <h2>This is the main screen of Mal and Hugo's Whatsapp clone. Welcome, {this.state.username}!</h2>
+                <MessagesContainer interlocutor={this.props.interlocutor} messages={this.props.messages}/>
+                <div>
+                  <form onSubmit={this.submitFormHandler}>
+                    <label>
+                      Message:
+                      <input type="text" name="message" ref="message"/>
+                    </label>
+                    <input type="submit" value="Submit" />
+                  </form>
+                </div>
+            </CenterThingWrapper>
+    }
+}
