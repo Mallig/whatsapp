@@ -25,21 +25,28 @@ class App extends React.Component {
     this.loggedIn()
   }
 
-  currentUser = () => {
-      currentUser(cookies.get(cookieName))
-      .then(res => {
-        return res || this.state.currentUserName
-      })
-      .catch(err => {
-        console.log(err)
-      })
+  currentUser = async () => {
+    try {
+      let res = await currentUser(cookies.get(cookieName))
+      this.setState({username: res})
+      return res
+    } catch (err) {
+    }
   }
 
-  async loggedIn() {
+  loggedIn = async () => {
     if (cookies.get(cookieName)) {
-      const res = await verifyToken(cookies.get(cookieName))
-      this.setState({loggedIn: res})
+      try {
+        await verifyToken(cookies.get(cookieName))
+        .then(res => this.setState({loggedIn: res}))
+      } catch (err) {
+      }
     }
+  }
+
+  logout = () => {
+    cookies.remove('whatsappSession', { path: '/' })
+    this.setState({ loggedIn: false })
   }
 
   onSubmit = (data) => {
@@ -62,6 +69,8 @@ class App extends React.Component {
         <NavbarWrapper>
           <button href='/'>Home</button>
           This is the Navbar
+
+          <button onClick={this.logout}> Log Out </button>
         </NavbarWrapper>
           <div id='mainSection'>
             {this.state.loggedIn

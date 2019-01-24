@@ -3,6 +3,7 @@ import {CenterThing} from './centerThing/CenterThing'
 import {LeftThing} from './leftThing/LeftThing'
 // import {UsersClient} from './UsersClient'
 import {ConversationsClient} from './ConversationsClient'
+import ListWrapper from './ListWrapper'
 import styled from 'styled-components'
 
 class MainScreen extends React.Component {
@@ -39,6 +40,9 @@ class MainScreen extends React.Component {
         }).catch(err => {
             console.log(err)
         })
+        .catch(err => {
+          console.log(err)
+        })
     }
 
     componentDidUpdate(prevProps, prevState) {
@@ -53,7 +57,6 @@ class MainScreen extends React.Component {
     }
 
     loadConversation = id => {
-        
         ConversationsClient.fetchConversation(this.state.currentUserId, id)
         .then(res => {
             this.setState({interlocutor: id})
@@ -68,6 +71,9 @@ class MainScreen extends React.Component {
             <LeftThing latestConversations={this.state.latestConversations} loadConversation={this.loadConversation}/>
             <CenterThing username={this.props.username} messages={this.state.conversation}/>
             <RightThingWrapper>
+                <ListWrapper fontSize='30' inputHeight='90vh'>
+                    {/* {this.state.users} */}
+                </ListWrapper>
             </RightThingWrapper>
         </MainScreenWrapper>
     }
@@ -82,7 +88,7 @@ const MainScreenWrapper = styled.div`
     justify-content: center;
 `
 
-const RightThingWrapper = styled.section`
+const RightThingWrapper = styled.div`
     border-style: solid;
     border-width: 2px;
     border-color: blue;

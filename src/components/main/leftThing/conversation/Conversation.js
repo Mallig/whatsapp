@@ -9,7 +9,6 @@ export const Conversation = ({convo, loadConversation}) => {
     return <ConversationWrapper onClick={load}>
         <ConvoParticipant>{convo.participant_ids}</ConvoParticipant>
         <ConvoMessage>{convo.last_message}</ConvoMessage>
-        {console.log(convo.last_message)}
     </ConversationWrapper>
 }
 

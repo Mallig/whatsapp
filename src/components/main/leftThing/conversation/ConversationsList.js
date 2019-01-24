@@ -11,8 +11,6 @@ class ConversationsList extends React.Component {
                 {this.props.latestConversations.map((convo) =>
                     <Conversation key={convo.conversation_id} convo={convo} loadConversation={this.props.loadConversation}/>
                 )}
-                {console.log('in conversation list')}
-                {console.log(this.props.latestConversations)}
             </ListWrapper>
         )
     }
