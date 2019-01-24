@@ -1,25 +1,18 @@
 import React from 'react'
 
-import {dummyConvs} from '../../../../resources/DummyConversations'
+// import {dummyConvs} from '../../../../resources/DummyConversations'
 import Conversation from './Conversation'
 import ListWrapper from '../../ListWrapper'
 
 class ConversationsList extends React.Component {
-
-    constructor() {
-        super()
-        this.state = {
-            dummyConversations: dummyConvs
-        }
-    }
-
-
     render() {
         return (
             <ListWrapper inputHeight="70vh" >
-                {this.state.dummyConversations.map((convo) =>
-                    <Conversation key={convo.id} convo={convo} loadConversation={this.props.loadConversation}/>
+                {this.props.latestConversations.map((convo) =>
+                    <Conversation key={convo.conversation_id} convo={convo} loadConversation={this.props.loadConversation}/>
                 )}
+                {console.log('in conversation list')}
+                {console.log(this.props.latestConversations)}
             </ListWrapper>
         )
     }
