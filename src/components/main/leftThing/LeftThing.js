@@ -14,5 +14,7 @@ const LeftThingWrapper = styled.section`
 export const LeftThing = (props) => 
     <LeftThingWrapper>
             <h3>This is the header of the left thing.</h3>
-            <ConversationsList loadConversation={props.loadConversation}/>
+            <ConversationsList latestConversations={props.latestConversations} loadConversation={props.loadConversation}/>
+            {console.log('in left thing')}
+            {console.log(props.latestConversations)}
     </LeftThingWrapper>

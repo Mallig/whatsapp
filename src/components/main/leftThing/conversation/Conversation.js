@@ -5,10 +5,11 @@ import ConvoParticipant from './ConvoParticipant'
 import ConvoMessage from './ConvoMessage'
 
 export const Conversation = ({convo, loadConversation}) => {
-    const load = () => loadConversation(convo.id)
+    const load = () => loadConversation(convo.conversation_id)
     return <ConversationWrapper onClick={load}>
-        <ConvoParticipant>{convo.participant}</ConvoParticipant>
-        <ConvoMessage>{convo.displayMessage}</ConvoMessage>
+        <ConvoParticipant>{convo.participant_ids}</ConvoParticipant>
+        <ConvoMessage>{convo.last_message}</ConvoMessage>
+        {console.log(convo.last_message)}
     </ConversationWrapper>
 }
 
