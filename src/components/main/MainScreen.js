@@ -12,7 +12,6 @@ class MainScreen extends React.Component {
         super(props)
         this.state = {
             interlocutor: 2,
-            // users: undefined,
             conversation: [],
             latestConversations: [],
             currentUserId: this.props.currentUserId,
@@ -21,27 +20,43 @@ class MainScreen extends React.Component {
     }
 
     fetchConversation = async () => {
-        return await ConversationsClient.fetchConversation(this.state.currentUserId, this.state.interlocutor)
-    }
-
-    fetchLatestConversations = async () => {
-        return await ConversationsClient.fetchLatestConversations(this.state.currentUserId)
-    }
-
-    componentDidUpdate(prevProps, prevState) {
-        if (prevState.interlocutor !== this.state.interlocutor) {
-            ConversationsClient.fetchConversation(this.state.currentUserId, this.state.interlocutor)
-            .then(res => {
-                this.setState({conversation: res.data})
-            }).catch(err => {
-                console.log(err)
-            })
+        try {
+            const res = await ConversationsClient.fetchConversation(this.state.currentUserId, this.state.interlocutor)
+            console.log(res)
+            this.setState({ conversation: res.data })
+        } catch(err) {
+            console.log(err)
         }
     }
 
+    componentDidMount() {
+        this.fetchConversation()
+        this.fetchLatestConversations()
+    }
+
+    fetchLatestConversations = async () => {
+        try {
+            const res = await ConversationsClient.fetchLatestConversations(this.state.currentUserId)
+            this.setState({ latestConversations: res.data })
+        } catch(err) {
+            console.log(err)
+        }
+    }
+
+    // componentDidUpdate(prevProps, prevState) {
+    //     if (prevState.interlocutor !== this.state.interlocutor) {
+    //         ConversationsClient.fetchConversation(this.state.currentUserId, this.state.interlocutor)
+    //         .then(res => {
+    //             this.setState({conversation: res.data})
+    //         }).catch(err => {
+    //             console.log(err)
+    //         })
+    //     }
+    // }
+
     loadConversation = async (id) => {
         try {
-            res = await ConversationsClient.fetchConversationById(id)
+            const res = await ConversationsClient.fetchConversationById(id)
             this.setState({conversation: res.data})
         } catch(err) {
             console.log(err)
@@ -50,8 +65,8 @@ class MainScreen extends React.Component {
 
     render() {
         return <MainScreenWrapper>
-            <LeftThing fetchLatestConversations={this.fetchLatestConversations} loadConversation={this.loadConversation}/>
-            <CenterThing username={this.props.username} loadMessages={this.fetchConversation}/>
+            <LeftThing latestConversations={this.state.latestConversations} loadConversation={this.loadConversation}/>
+            <CenterThing username={this.props.username} messages={this.state.conversation}/>
             <RightThingWrapper>
                 This is the right thing
             </RightThingWrapper>

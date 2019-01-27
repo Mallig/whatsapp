@@ -21,30 +21,15 @@ export const LeftThing = (props) =>
     </LeftThingWrapper>
 =======
 export class LeftThing extends React.Component {
-    
-    state = {
-        latestConversations: []
+
+    handleClick() {
+        
     }
 
-    async fetchLatestConversations() {
-        try {
-            const res = await this.props.fetchLatestConversations()
-            console.log()
-            this.setState({
-                latestConversations: res.data
-            })
-        } catch(err) {
-            console.log(err)
-        }
-    }
-
-    componentDidMount() {
-        this.fetchLatestConversations()
-    }
     render() {
         return <LeftThingWrapper>
                     <h3>This is the header of the left thing.</h3>
-                    <ConversationsList latestConversations={this.state.latestConversations} loadConversation={this.props.loadConversation}/>
+                    <ConversationsList latestConversations={this.props.latestConversations} loadConversation={this.props.loadConversation}/>
                </LeftThingWrapper>
     }
 
