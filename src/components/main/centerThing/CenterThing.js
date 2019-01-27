@@ -45,7 +45,7 @@ export class CenterThing extends React.Component {
     render() {
         return <CenterThingWrapper>
                 <h2>This is the main screen of Mal and Hugo's Whatsapp clone. Welcome, {this.state.username}!</h2>
-                <MessagesContainer interlocutor={this.props.interlocutor} messages={this.props.messages}/>
+                <MessagesContainer interlocutor={this.props.interlocutor} loadMessages={this.props.loadMessages}/>
                 <div>
                   <form onSubmit={this.submitFormHandler}>
                     <label>

@@ -7,7 +7,7 @@ export class ConversationsClient {
             method: 'get',
             // url: `http://whatsapp-conversations.herokuapp.com/${userOne}/${userTwo}`,
             // url: `http://localhost:9292/${userOne}/${userTwo}`,
-            url: `http://localhost:5000/conversation/${userTwo}`,
+            url: `http://localhost:5000/conversation/${userOne}/${userTwo}`,
             headers: {
                 'Content-Type': 'application/json'
             }
@@ -26,7 +26,7 @@ export class ConversationsClient {
             method: 'get',
             // url: `http://whatsapp-conversations.herokuapp.com/${userOne}/${userTwo}`,
             // url: `http://localhost:9292/${userOne}/${userTwo}`,
-            url: `http://localhost:5000/conversations/${user_id}`,
+            url: `http://localhost:5000/conversation/${user_id}/latest`,
             headers: {
                 'Content-Type': 'application/json'
             }

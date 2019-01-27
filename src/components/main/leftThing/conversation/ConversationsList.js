@@ -9,7 +9,7 @@ class ConversationsList extends React.Component {
         return (
             <ListWrapper inputHeight="70vh" >
                 {this.props.latestConversations.map((convo) =>
-                    <Conversation key={convo.conversation_id} convo={convo} loadConversation={this.props.loadConversation}/>
+                    <Conversation key={Math.random()} convo={convo} loadConversation={this.props.loadConversation}/>
                 )}
                 {console.log('in conversation list')}
                 {console.log(this.props.latestConversations)}
