@@ -32,8 +32,9 @@ class MainScreen extends React.Component {
     componentDidMount() {
         this.fetchConversation()
         this.fetchLatestConversations()
+        
     }
-
+    
     fetchLatestConversations = async () => {
         try {
             const res = await ConversationsClient.fetchLatestConversations(this.state.currentUserId)
