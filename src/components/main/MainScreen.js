@@ -20,29 +20,12 @@ class MainScreen extends React.Component {
         }
     }
 
-    componentDidMount() {
-        // UsersClient.fetchUsers()
-        // .then(res => {
-        //     this.setState({users: res.data.map(each => each["id"] + ", " + each["username"] + " \n")})
-        // })
-        // .catch(err => {
-        //     console.log(err)
-        // })
-        ConversationsClient.fetchConversation(this.state.currentUserId, this.state.interlocutor)
-        .then(res => {
-            this.setState({conversation: res.data})
-        }).catch(err => {
-            console.log(err)
-        })
-        ConversationsClient.fetchLatestConversations(this.state.currentUserId)
-        .then(res => {
-            this.setState({latestConversations: res.data})
-        }).catch(err => {
-            console.log(err)
-        })
-        .catch(err => {
-          console.log(err)
-        })
+    fetchConversation = async () => {
+        return await ConversationsClient.fetchConversation(this.state.currentUserId, this.state.interlocutor)
+    }
+
+    fetchLatestConversations = async () => {
+        return await ConversationsClient.fetchLatestConversations(this.state.currentUserId)
     }
 
     componentDidUpdate(prevProps, prevState) {
@@ -56,8 +39,8 @@ class MainScreen extends React.Component {
         }
     }
 
-    loadConversation = id => {
-        ConversationsClient.fetchConversation(this.state.currentUserId, id)
+    loadConversation = async (id) => {
+        await ConversationsClient.fetchConversation(this.state.currentUserId, id)
         .then(res => {
             this.setState({interlocutor: id})
             this.setState({conversation: res.data})
@@ -68,8 +51,8 @@ class MainScreen extends React.Component {
 
     render() {
         return <MainScreenWrapper>
-            <LeftThing latestConversations={this.state.latestConversations} loadConversation={this.loadConversation}/>
-            <CenterThing username={this.props.username} messages={this.state.conversation}/>
+            <LeftThing fetchLatestConversations={this.fetchLatestConversations} loadConversation={this.loadConversation}/>
+            <CenterThing username={this.props.username} loadMessages={this.fetchConversation}/>
             <RightThingWrapper>
                 <ListWrapper fontSize='30' inputHeight='90vh'>
                     {/* {this.state.users} */}
