@@ -23,7 +23,7 @@ class MainScreen extends React.Component {
         try {
             const res = await ConversationsClient.fetchConversation(this.state.currentUserId, this.state.interlocutor)
             console.log(res)
-            this.setState({ conversation: res.data })
+            if (res.data) this.setState({ conversation: res.data })
         } catch(err) {
             console.log(err)
         }
@@ -37,27 +37,16 @@ class MainScreen extends React.Component {
     fetchLatestConversations = async () => {
         try {
             const res = await ConversationsClient.fetchLatestConversations(this.state.currentUserId)
-            this.setState({ latestConversations: res.data })
+            if (res.data) this.setState({ latestConversations: res.data })
         } catch(err) {
             console.log(err)
         }
     }
-
-    // componentDidUpdate(prevProps, prevState) {
-    //     if (prevState.interlocutor !== this.state.interlocutor) {
-    //         ConversationsClient.fetchConversation(this.state.currentUserId, this.state.interlocutor)
-    //         .then(res => {
-    //             this.setState({conversation: res.data})
-    //         }).catch(err => {
-    //             console.log(err)
-    //         })
-    //     }
-    // }
-
+    
     loadConversation = async (id) => {
         try {
             const res = await ConversationsClient.fetchConversationById(id)
-            this.setState({conversation: res.data})
+            if (res.data) this.setState({conversation: res.data})
         } catch(err) {
             console.log(err)
         }
