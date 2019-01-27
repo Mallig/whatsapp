@@ -4,14 +4,19 @@ import styled from 'styled-components'
 import ConvoParticipant from './ConvoParticipant'
 import ConvoMessage from './ConvoMessage'
 
-export const Conversation = ({convo, loadConversation}) => {
-    const load = () => loadConversation(convo.conversation_id)
-    return <ConversationWrapper onClick={load}>
-        <ConvoParticipant>{convo.participant_ids}</ConvoParticipant>
-        <ConvoMessage>{convo.last_message}</ConvoMessage>
-    </ConversationWrapper>
-}
+export class Conversation extends React.Component {
 
+    load = () => {
+        this.props.onClick(this.props.convo.conversation_id)
+    }
+    
+    render() {
+        return <ConversationWrapper onClick={this.load}>
+            <ConvoParticipant>{this.props.convo.participant_ids}</ConvoParticipant>
+            <ConvoMessage>{this.props.convo.last_message}</ConvoMessage>
+        </ConversationWrapper>
+    }
+}
 export default Conversation;
 
 const ConversationWrapper = styled.div`
