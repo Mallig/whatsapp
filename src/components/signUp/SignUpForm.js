@@ -49,7 +49,7 @@ class SignUpForm extends React.Component {
             <input name='password' id='password' type='password' required/><br/>
           </div>
           <div id='signUp-confirmPassword'>
-            <label htmlFor='confirm-password'>Confirm your password:</label>
+            <label htmlFor='confirmPassword'>Confirm your password:</label>
             <input name='confirmPassword' id='confirmPassword' type='password' required/><br/>
           </div>
           <button type='submit'>submit that s**t</button>
