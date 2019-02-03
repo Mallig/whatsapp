@@ -34,6 +34,7 @@ export class CenterThing extends React.Component {
           this.setState({username: res})
         })
       } catch (err) {
+        console.log(err)
       }
     }
 

@@ -11,15 +11,6 @@ const LeftThingWrapper = styled.section`
     text-align: left;
     padding: 0% 2% 2% 2%;
 `
-<<<<<<< HEAD
-export const LeftThing = (props) => 
-    <LeftThingWrapper>
-            <h3>This is the header of the left thing.</h3>
-            <ConversationsList latestConversations={props.latestConversations} loadConversation={props.loadConversation}/>
-            {console.log('in left thing')}
-            {console.log(props.latestConversations)}
-    </LeftThingWrapper>
-=======
 export class LeftThing extends React.Component {
 
     handleClick() {
@@ -34,4 +25,3 @@ export class LeftThing extends React.Component {
     }
 
 }
->>>>>>> Uses correct route in conversation client. Now uses async/await correctly.

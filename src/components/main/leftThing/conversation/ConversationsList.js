@@ -15,10 +15,7 @@ class ConversationsList extends React.Component {
             <ListWrapper inputHeight="70vh" >
                 {this.props.latestConversations.map((convo) => {
                     return <Conversation key={Math.random()} onClick={this.handleClick} convo={convo}/>
-                }
-                )}
-                {console.log('in conversation list')}
-                {console.log(this.props.latestConversations)}
+                })}
             </ListWrapper>
         )
     }

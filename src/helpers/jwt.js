@@ -30,6 +30,7 @@ export async function currentUser(token = new Cookies().get("whatsappSession")) 
       const res = await verify(token)
       return res['name']
     } catch (err) {
+        console.log(err)
     }
 }
 
@@ -38,5 +39,6 @@ async function verify(token) {
         const res = await jwt.verify(token, secret_key())
         return res
     } catch (err) {
+        console.log(err)
     }
 }

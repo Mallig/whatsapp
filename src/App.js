@@ -38,8 +38,9 @@ class App extends React.Component {
   loggedIn = async () => {
     if (cookies.get(cookieName)) {
       try {
-        await verifyToken(cookies.get(cookieName))
-        .then(res => this.setState({loggedIn: res}))
+        const res = await verifyToken(cookies.get(cookieName))
+        const loggedIn = new Date(res['exp'] * 1000) - new Date() > 0
+        this.setState({loggedIn: loggedIn})
       } catch (err) {
       }
     }
