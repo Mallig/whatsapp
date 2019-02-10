@@ -27,15 +27,9 @@ export class CenterThing extends React.Component {
       this.getUsername()
     }
 
-    getUsername = async () => {
-      try {
-        await currentUser()
-        .then(res => {
-          this.setState({username: res})
-        })
-      } catch (err) {
-        console.log(err)
-      }
+    getUsername = () => {
+      const res = currentUser()
+      this.setState({username: res})
     }
 
     submitFormHandler = event => {

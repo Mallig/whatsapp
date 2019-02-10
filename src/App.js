@@ -25,24 +25,18 @@ class App extends React.Component {
     this.loggedIn()
   }
 
-  currentUser = async () => {
-    try {
-      let res = await currentUser(cookies.get(cookieName))
-      this.setState({username: res})
-      return res
-    } catch (err) {
-      console.log(err)
-    }
+  currentUser = () => {
+    const res = currentUser(cookies.get(cookieName))
+    this.setState({username: res})
+    return res
   }
 
   loggedIn = async () => {
-    if (cookies.get(cookieName)) {
-      try {
-        const res = await verifyToken(cookies.get(cookieName))
-        const loggedIn = new Date(res['exp'] * 1000) - new Date() > 0
-        this.setState({loggedIn: loggedIn})
-      } catch (err) {
-      }
+    const cookie = cookies.get(cookieName)
+    if (cookie) {
+      const res = await verifyToken(cookie)
+      const loggedIn = new Date(res['exp'] * 1000 ) - new Date() > 0
+      this.setState({loggedIn: loggedIn})
     }
   }
 

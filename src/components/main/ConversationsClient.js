@@ -5,8 +5,6 @@ export class ConversationsClient {
     static async fetchConversation(userOne, userTwo) {
         const options = {
             method: 'get',
-            // url: `http://whatsapp-conversations.herokuapp.com/${userOne}/${userTwo}`,
-            // url: `http://localhost:9292/${userOne}/${userTwo}`,
             url: `http://localhost:5000/conversation/${userOne}/${userTwo}`,
             headers: {
                 'Content-Type': 'application/json'
@@ -24,8 +22,6 @@ export class ConversationsClient {
     static async fetchConversationById(id) {
         const options = {
             method: 'get',
-            // url: `http://whatsapp-conversations.herokuapp.com/${userOne}/${userTwo}`,
-            // url: `http://localhost:9292/${userOne}/${userTwo}`,
             url: `http://localhost:5000/conversation/${id}/id`,
             headers: {
                 'Content-Type': 'application/json'
@@ -43,8 +39,6 @@ export class ConversationsClient {
     static async fetchLatestConversations(user_id) {
         const options = {
             method: 'get',
-            // url: `http://whatsapp-conversations.herokuapp.com/${userOne}/${userTwo}`,
-            // url: `http://localhost:9292/${userOne}/${userTwo}`,
             url: `http://localhost:5000/conversation/${user_id}/latest`,
             headers: {
                 'Content-Type': 'application/json'

@@ -16,25 +16,16 @@ export const generateToken = (user) => {
     })
 }
 
+// export function verifyToken(token) {
+//     return verify(token)
+// }
+
+export function currentUser(token = new Cookies().get("whatsappSession")) {
+    const res = verifyToken(token)
+    return res['name']
+}
+
 export async function verifyToken(token) {
-    try {
-        const res = await verify(token)
-        return new Date(res['exp'] * 1000) - new Date() > 0
-    } catch (err) {
-        console.log(err)
-    }
-}
-
-export async function currentUser(token = new Cookies().get("whatsappSession")) {
-    try {
-      const res = await verify(token)
-      return res['name']
-    } catch (err) {
-        console.log(err)
-    }
-}
-
-async function verify(token) {
     try {
         const res = await jwt.verify(token, secret_key())
         return res

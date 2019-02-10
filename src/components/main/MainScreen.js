@@ -3,7 +3,6 @@ import {CenterThing} from './centerThing/CenterThing'
 import {LeftThing} from './leftThing/LeftThing'
 // import {UsersClient} from './UsersClient'
 import {ConversationsClient} from './ConversationsClient'
-import ListWrapper from './ListWrapper'
 import styled from 'styled-components'
 
 class MainScreen extends React.Component {
@@ -21,9 +20,9 @@ class MainScreen extends React.Component {
 
     fetchConversation = async () => {
         try {
-            const res = await ConversationsClient.fetchConversation(this.state.currentUserId, this.state.interlocutor)
+            const res = await ConversationsClient.fetchConversationById(this.state.currentUserId)
             console.log(res)
-            if (res.data) this.setState({ conversation: res.data })
+        if (res.data) this.setState({ conversation: res.data })
         } catch(err) {
             console.log(err)
         }
@@ -32,25 +31,16 @@ class MainScreen extends React.Component {
     componentDidMount() {
         this.fetchConversation()
         this.fetchLatestConversations()
-        
     }
     
-    fetchLatestConversations = async () => {
-        try {
-            const res = await ConversationsClient.fetchLatestConversations(this.state.currentUserId)
-            if (res.data) this.setState({ latestConversations: res.data })
-        } catch(err) {
-            console.log(err)
-        }
+    fetchLatestConversations = () => {
+        const res = ConversationsClient.fetchLatestConversations(this.state.currentUserId)
+        if (res.data) this.setState({ latestConversations: res.data })
     }
     
-    loadConversation = async (id) => {
-        try {
-            const res = await ConversationsClient.fetchConversationById(id)
-            if (res.data) this.setState({conversation: res.data})
-        } catch(err) {
-            console.log(err)
-        }
+    loadConversation = (id) => {
+        const res = ConversationsClient.fetchConversationById(id)
+        if (res.data) this.setState({conversation: res.data})
     }
 
     render() {
