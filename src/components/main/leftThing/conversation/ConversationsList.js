@@ -6,15 +6,12 @@ import ListWrapper from '../../ListWrapper'
 
 class ConversationsList extends React.Component {
 
-    handleClick = (id) => {
-        this.props.loadConversation(id)
-    }
 
     render() {
         return (
             <ListWrapper inputHeight="70vh" >
                 {this.props.latestConversations.map((convo) => {
-                    return <Conversation key={Math.random()} onClick={this.handleClick} convo={convo}/>
+                    return <Conversation key={Math.random()} loadConversation={this.props.loadConversation} convo={convo}/>
                 })}
             </ListWrapper>
         )

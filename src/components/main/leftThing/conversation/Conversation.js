@@ -6,8 +6,9 @@ import ConvoMessage from './ConvoMessage'
 
 export class Conversation extends React.Component {
 
-    load = () => {
-        this.props.onClick(this.props.convo.conversation_id)
+    load = (e) => {
+        e.preventDefault()
+        this.props.loadConversation(this.props.convo.conversation_id)
     }
     
     render() {

@@ -11,17 +11,8 @@ const LeftThingWrapper = styled.section`
     text-align: left;
     padding: 0% 2% 2% 2%;
 `
-export class LeftThing extends React.Component {
-
-    handleClick() {
-        
-    }
-
-    render() {
-        return <LeftThingWrapper>
-                    <h3>This is the header of the left thing.</h3>
-                    <ConversationsList latestConversations={this.props.latestConversations} loadConversation={this.props.loadConversation}/>
-               </LeftThingWrapper>
-    }
-
-}
+export const LeftThing = (props) => 
+    <LeftThingWrapper>
+        <h3>This is the header of the left thing.</h3>
+        <ConversationsList latestConversations={props.latestConversations} loadConversation={props.loadConversation}/>
+    </LeftThingWrapper>

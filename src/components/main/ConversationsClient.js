@@ -2,7 +2,7 @@ import axios from 'axios'
 
 export class ConversationsClient {
 
-    static async fetchConversation(userOne, userTwo) {
+    async fetchConversation(userOne, userTwo) {
         const options = {
             method: 'get',
             url: `http://localhost:5000/conversation/${userOne}/${userTwo}`,
@@ -19,7 +19,7 @@ export class ConversationsClient {
         }
     }
 
-    static async fetchConversationById(id) {
+    async fetchConversationById(id) {
         const options = {
             method: 'get',
             url: `http://localhost:5000/conversation/${id}/id`,
@@ -28,15 +28,13 @@ export class ConversationsClient {
             }
         }
         try {
-            const response = await axios(options)
-            return response
+            return await axios(options)
         } catch (error) {
             console.error(error)
-            return error
         }
     }
 
-    static async fetchLatestConversations(user_id) {
+    async fetchLatestConversations(user_id) {
         const options = {
             method: 'get',
             url: `http://localhost:5000/conversation/${user_id}/latest`,
@@ -45,8 +43,7 @@ export class ConversationsClient {
             }
         }
         try {
-            const response = await axios(options)
-            return response
+            return await axios(options)
         } catch (error) {
             console.error(error)
             return error

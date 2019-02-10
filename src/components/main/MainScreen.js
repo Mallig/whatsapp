@@ -5,6 +5,8 @@ import {LeftThing} from './leftThing/LeftThing'
 import {ConversationsClient} from './ConversationsClient'
 import styled from 'styled-components'
 
+const conversationClient = new ConversationsClient()
+
 class MainScreen extends React.Component {
 
     constructor(props) {
@@ -14,38 +16,36 @@ class MainScreen extends React.Component {
             conversation: [],
             latestConversations: [],
             currentUserId: this.props.currentUserId,
+            currentConversationId: undefined,
             username: this.props.username
         }
     }
 
-    fetchConversation = async () => {
-        try {
-            const res = await ConversationsClient.fetchConversationById(this.state.currentUserId)
-            console.log(res)
+    fetchConversation = async (id=this.state.currentUserId) => {
+        const res = await conversationClient.fetchConversationById(id)
+        console.log(res)
         if (res.data) this.setState({ conversation: res.data })
+        console.log(this.state.conversation)
+        this.setState({currentConversationId: id})
+    }
+
+    componentDidMount() {
+        // this.fetchConversation()
+        this.fetchLatestConversations()
+    }
+    
+    fetchLatestConversations = async () => {
+        try {
+            const res = await conversationClient.fetchLatestConversations(this.state.currentUserId)
+            if (res.data) this.setState({ latestConversations: res.data })
         } catch(err) {
             console.log(err)
         }
     }
 
-    componentDidMount() {
-        this.fetchConversation()
-        this.fetchLatestConversations()
-    }
-    
-    fetchLatestConversations = () => {
-        const res = ConversationsClient.fetchLatestConversations(this.state.currentUserId)
-        if (res.data) this.setState({ latestConversations: res.data })
-    }
-    
-    loadConversation = (id) => {
-        const res = ConversationsClient.fetchConversationById(id)
-        if (res.data) this.setState({conversation: res.data})
-    }
-
     render() {
         return <MainScreenWrapper>
-            <LeftThing latestConversations={this.state.latestConversations} loadConversation={this.loadConversation}/>
+            <LeftThing latestConversations={this.state.latestConversations} loadConversation={this.fetchConversation}/>
             <CenterThing username={this.props.username} messages={this.state.conversation}/>
             <RightThingWrapper>
                 This is the right thing
