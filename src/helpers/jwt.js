@@ -16,10 +16,6 @@ export const generateToken = (user) => {
     })
 }
 
-// export function verifyToken(token) {
-//     return verify(token)
-// }
-
 export function currentUser(token = new Cookies().get("whatsappSession")) {
     const res = verifyToken(token)
     return res['name']
